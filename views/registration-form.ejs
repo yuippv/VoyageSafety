@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .registration-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.registration-form h3 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+        .registration-form input[type="password"],
+        .registration-form input[type="email"],
+		.registration-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+        </style>
+    </head>
+    <body>
+        <div class="registration-form">
+            <h3>Registration Form</h3>
+                <p> <%=(typeof alertMsg!='undefined')? alertMsg:''%></p> 
+                    <form action="register" method="post" >
+                        <div class="form-container">
+                            <div>
+                                <input type="text" placeholder="First Name" name="FirstName" required>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Last Name" name="LastName" required>
+                            </div>
+                        </div>
+                        <div class="form-container">
+                            <div>
+                                <input type="password" placeholder="Password" name="Password">
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Confirm Password" name="confirm_password" >
+                            </div> 
+                        </div>
+                        <div class="form-container">  
+                            <div>
+                                <input type="email" placeholder="Email" name="Email" required>
+                            </div>
+                            <div><br>
+                                <input type="radio" value="male" name="gender" required><label>Male</label>
+                                <input type="radio" value="female" name="gender" required><label>Female</label>
+                            </div>
+                        </div>
+                        <button type="submit">Register Now</button>
+                    </form>
+                <a href="/login">Login</a>
+        </div>
+    </body>
+</html>
