@@ -2,10 +2,21 @@
 <html>
     <head>
         <title>Dashboard</title>
+        <meta charset="utf-8">
+        <title>Express Application</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
     <body>
         <h2>Welcome to Dashboard</h2>
         <p><b>Login Email</b> - <%=email %></p>
         <p><a href="/logout">Logout</a></p>
+
+        <form class="search" action="search" method="post">
+            <input class="form-control typeahead tt-query" type="text" name="input" placeholder="Search">
+            <input class="btn btn-primary" type="submit"  value="Submit">
+            <p><%=(typeof alertMsg!='undefined')? alertMsg:''%>
+        </form>
+
     </body>
 </html>
