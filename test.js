@@ -16,20 +16,18 @@ pool.connect();
 //     console.log(res);
 // }
 
-
-// pool.query(
-//     `INSERT INTO "Voyage_Safety"."User" values ('3','qqq','www','11111111','male','2020-01-01','@hotmail.co.th','111','0863799166','true')`,
-//   (err, res) => {
-//       console.log(res)
-//     pool.end();
-//   }
-// );
-// var Email = 'glaa656@hotmail.co.th';
-// pool.query(`SELECT 'Email' FROM "Voyage_Safety"."User" WHERE "Email" = '`+Email+`'`,(err, res) => {
-//     console.log(res);
-// });
+pool.query(`BEGIN`);
+pool.query(
+    `INSERT INTO "Voyage_Safety"."User" values ('2','qqq','www','11111111','male','2020-01-01','@hotmail.co.th','111','0863799166','true')`,
+  (err, res) => {
+      console.log(res.command)
+    pool.end();
+  }
+)
+pool.query(`COMMIT`);
 
 
 
-  console.log(userId);
+
+
 

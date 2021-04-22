@@ -17,7 +17,7 @@ router.post('/register', function (request, response, next) {
   var Password = request.body.Password;
   var confirm_password = request.body.confirm_password;
   var Phone = request.body.Phone;
-  
+
   db.query(`SELECT 'Email' FROM "Voyage_Safety"."User" WHERE "Email" = '` + Email + `'`, (err, res) => {
 
     if (res.rows[0]) {
@@ -38,19 +38,21 @@ router.post('/register', function (request, response, next) {
           0
         );
       };
-    
-      var userId = Math.abs(sdbm(FirstName+LastName));
+
+      var userId = Math.abs(sdbm(FirstName + LastName));
       // save users data into database
+      db.query(`BEGIN`);
       db.query(
-        `INSERT INTO "Voyage_Safety"."User" values ('`+userId+`','` + FirstName + `','` + LastName + `','`+CitizenId+`','` + Gender + `','`+DateOfBirth+`','` + Email + `','` + Password + `','`+Phone+`','true')`,
+        `INSERT INTO "Voyage_Safety"."User" values ('` + userId + `','` + FirstName + `','` + LastName + `','` + CitizenId + `','` + Gender + `','` + DateOfBirth + `','` + Email + `','` + Password + `','` + Phone + `','true')`,
         (err, res) => {
+
           console.log(res);
           var msg = "You are successfully registered";
           response.render('registration-form', { alertMsg: msg });
           response.end();
         }
       );
-
+      db.query(`COMMIT`);
     }
   })
 });
